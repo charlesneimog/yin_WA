@@ -1,12 +1,9 @@
 ### WebAssembly from C/Cpp
 
-Simple repo to remind me how I can compile C code to work with the browser.
 
-To compile `C` code we run this:
+This is a simple code to implement yin pitch detector, it is based on the code of [ashokfernandez](https://github.com/ashokfernandez/Yin-Pitch-Tracking) and [JorenSix](https://github.com/JorenSix/Pidato) and all the recent forks and updates (2023) from [ashokfernandez](https://github.com/ashokfernandez/Yin-Pitch-Tracking).
 
-`emcc -o index.js main.c -O3 -s NO_EXIT_RUNTIME=1 -s "EXPORTED_RUNTIME_METHODS=['ccall']"`
 
-To get `emcc` running, you need to check the link: https://emscripten.org/docs/getting_started/downloads.html
 
-This example will print the result of the C function  Browser console, nothing more. It needs to be run on a server. It does not work opening the `index.html`.
+
 
