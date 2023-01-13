@@ -13,7 +13,11 @@ source ./emsdk_env.sh
   1. The path of `emsdk_env.sh` depends of your instalation folder.
   2. On Windows, run `emsdk_env.bat` instead of `source ./emsdk_env.sh`.
   
-After this steps, you can run `make` or `emcc -o public/CFunctions.js $(C_FILES) -O3 -s NO_EXIT_RUNTIME=1 -s "EXPORTED_RUNTIME_METHODS=['ccall']"` on Windows.
+After this steps, you can run `make` or 
+```
+emcc -o public/CFunctions.js $(C_FILES) -O3 -s NO_EXIT_RUNTIME=1 -s "EXPORTED_RUNTIME_METHODS=['ccall']"
+```
+on Windows.
 
 ### License
 
