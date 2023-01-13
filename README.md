@@ -9,7 +9,7 @@ Before run `make` you need to install the [emscripten](https://emscripten.org/do
 ```
 source ./emsdk_env.sh
 ```
-*Obs*: 
+**Obs**: 
   1. The path of `emsdk_env.sh` depends of your instalation folder.
   2. On Windows, run `emsdk_env.bat` instead of `source ./emsdk_env.sh`.
 
