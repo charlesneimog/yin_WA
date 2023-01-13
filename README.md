@@ -15,6 +15,6 @@ source ./emsdk_env.sh
 
 ### License
 
-The software is licensed under the GPL since the Yin code is based on the GPL’d TarsosDSP java implementation which is in turn based on the aubio implementation in c by Paul Brossier, also under the GPL.
+The software is licensed under the GPL since the Yin code is based on the GPL’d TarsosDSP Java implementation which is in turn based on the aubio implementation in `C` by Paul Brossier, also under the GPL.
 
 
