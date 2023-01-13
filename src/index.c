@@ -14,10 +14,11 @@
 // Obs, the var audio, now come from JS, and is one parameter of the function
 // it return one float with the pitch
 
-float EMSCRIPTEN_KEEPALIVE C_getPitch(float* audio) {
-   int buffer_length = 2048;
+float EMSCRIPTEN_KEEPALIVE C_getPitch(float* audio, int sampleRate) {
+   int buffer_length = 4096;
    Yin yin;
    float pitch;
+   
 
    // convert float to int16_t
    // obs, the audio is a pointer to a float array
@@ -28,10 +29,13 @@ float EMSCRIPTEN_KEEPALIVE C_getPitch(float* audio) {
 	}
 
    // init yin
-   Yin_init(&yin, buffer_length, 0.3);
+   Yin_init(&yin, buffer_length, 0.4);
 
    // get pitch
    pitch = Yin_getPitch(&yin, audio_int);
+
+   // free memory
+   Yin_free(&yin);
 
 
    // free memory

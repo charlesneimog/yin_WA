@@ -150,16 +150,9 @@ float Yin_parabolicInterpolation(Yin *yin, int16_t tauEstimate) {
 	return betterTau;
 }
 
-
-
-
-
 /* ------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------- PUBLIC FUNCTIONS
 -------------------------------------------------------------------------------------------*/
-
-
-
 /**
  * Initialise the Yin pitch detection object
  * @param yin        Yin pitch detection object to initialise
@@ -180,6 +173,14 @@ void Yin_init(Yin *yin, int16_t bufferSize, float threshold){
 	for(i = 0; i < yin->halfBufferSize; i++){
 		yin->yinBuffer[i] = 0;
 	}
+}
+
+/**
+ * Free buffer in the Yin pitch detection object
+ * @param yin        Yin pitch detection object to free
+ */
+void Yin_free(Yin *yin){
+	free(yin->yinBuffer);
 }
 
 /**
