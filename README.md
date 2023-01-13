@@ -5,5 +5,8 @@ This is a simple code to implement yin pitch detector, it is based on the code o
 
 
 
+### License
+
+The software is licensed under the GPL since the Yin code is based on the GPL’d TarsosDSP java implementation which is in turn based on the aubio implementation in c by Paul Brossier, also under the GPL.
 
 
