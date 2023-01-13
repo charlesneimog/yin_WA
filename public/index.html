@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+	<html lang=en-us>
+		<head>
+			<meta charset=utf-8>
+			<meta content="text/html; charset=utf-8" http-equiv=Content-Type>
+			<title>Emcc Simple Template</title>
+		</head>
+		<body>
+			<h1 id=title>Emcc Simple Template</h1>
+			<h1 id="freq">Pitch detector not initialized</h1>
+			<script>
+				// define Module
+				Module = {};
+			</script>
+			<script async src=index.js></script> <!-- HERE IS THE LOAD OF THE JS FILE THAT COME FROM THE EMCC COMPILATION -->
+			<script>
+				var stream = navigator.mediaDevices.getUserMedia({audio: true, video: false});
+				var size = 2048;
+				var last_fft = new Date().getTime();
+				var pitches_array = [];
+				
+				Module["onRuntimeInitialized"] = function() {
+					console.log("Audio Stream Started");
+									
+					function PitchDetection(data, sampleRate) {
+						var now = new Date().getTime();
+						if (now - last_fft > 100) {
+							last_fft = now;
+							var sound = Module._mallocMemory(size * 4);
+							Module.HEAPF32.set(data, sound / 4);
+							var pitch = Module._C_getPitch(sound);
+							Module._freeMemory(sound);
+							
+							if (pitch > 3520 || pitch < 65){
+								document.getElementById("freq").innerHTML = "Not pitch was detected"
+							} else{
+								// round pitch to two decimal places
+								pitch = Math.round(pitch * 100) / 100;
+								document.getElementById("freq").innerHTML = "Pitch detected " + pitch;
+
+							}
+						}
+					}
+					
+					function AudioStream() {
+						var audioContext = new AudioContext();
+						var analyser = audioContext.createAnalyser();
+						analyser.fftSize = 2048;
+						var sampleRate = audioContext.sampleRate;
+						var sampleRate = audioContext.sampleRate;
+						var data = new Float32Array(analyser.fftSize);
+						function step() {
+							requestAnimationFrame(step);
+							analyser.getFloatTimeDomainData(data);
+							PitchDetection(data, sampleRate);
+						}
+					
+						stream.then(function(stream) {
+							var source = audioContext.createMediaStreamSource(stream);
+							source.connect(analyser);
+							step();
+					
+						});
+					}
+
+
+
+
+
+
+
+
+
+
+
+					AudioStream();
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</script>
+		</body>
+	</html>
