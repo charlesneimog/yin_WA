@@ -10,7 +10,7 @@ all: index.js
 # Allow grow memory with ALLOW_MEMORY_GROWTH=1
 
 index.js: $(C_FILES)
-	emcc -o public/CFunctions.js $(C_FILES) -O3 -s NO_EXIT_RUNTIME=1 -s "EXPORTED_RUNTIME_METHODS=['ccall']"
+	emcc -o public/CFunctions.js $(C_FILES) -O3 -s NO_EXIT_RUNTIME=1 -s "EXPORTED_RUNTIME_METHODS=['ccall']" -s ALLOW_MEMORY_GROWTH=1
 
 	
 
